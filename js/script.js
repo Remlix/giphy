@@ -4,7 +4,18 @@
 /* global $ */
 
 $("#search-button").click(function(){
-  
+    fetch("https://api.giphy.com/v1/gifs/search?q=puppy&rating=pg&api_key=dc6zaTOxFJmzC")
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        var pic_url = data.data[0].images.original.url
+
+        $(".container").append(`<img src=` + pic_url + '>');
+
+    });
+
+
   
   
 });
